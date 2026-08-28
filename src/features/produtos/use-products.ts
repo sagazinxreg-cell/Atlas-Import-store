@@ -70,7 +70,7 @@ export function useSaveProduct() {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: async ({ id, values }: { id?: string; values: ProductFormPayload }) => {
+    mutationFn: async ({ id, values }: { id?: string | undefined; values: ProductFormPayload }) => {
       const { supplierName, ...rest } = values;
       const supplier_id = await resolveSupplierId(supplierName, rest.country ?? null);
 
