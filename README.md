@@ -672,3 +672,69 @@ Também mostrar a diferença percentual.
 Manter todos os cálculos independentes.
 
 Não modificar as calculadoras existentes de maneira que quebre suas funções.
+
+
+## Prompt 7 - Produtos
+
+Agora quero criar o módulo:
+
+📦 PRODUTOS
+
+Criar uma página completa para cadastrar e gerenciar meus produtos.
+
+Campos:
+
+- Nome
+- Marca
+- Categoria
+- Tamanho
+- Cor
+- Fornecedor
+- País de origem
+- Método de importação
+- Custo do produto
+- Custo de importação
+- Custo total
+- Custo por peça
+- Preço de venda
+- Quantidade
+- Foto
+- Observações
+
+Categorias:
+
+- Camiseta
+- Blusa
+- Moletom
+- Bermuda
+- Calça
+- Tênis
+- Boné
+- Jaqueta
+- Outros
+
+==================================================
+
+CUSTO REAL
+
+==================================================
+
+O custo total deve considerar:
+
+Produto + Frete + Impostos + Taxas + Outros custos
+
+Se uma importação tiver várias peças, distribuir corretamente os custos compartilhados para obter um custo médio por peça.
+
+Exemplo:
+
+10 peças
+Produtos: R$1.000
+Frete: R$300
+Impostos: R$400
+Taxas: R$100
+
+Total: R$1.800
+
+Custo médio: R$180 por peça.
+
+Nunca considerar automaticamente apenas o preço de compra como custo final.
