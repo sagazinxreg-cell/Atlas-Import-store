@@ -10,33 +10,167 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CompararRouteImport } from './routes/comparar'
+import { Route as ConfiguracoesRouteImport } from './routes/configuracoes'
+import { Route as CssbuyRouteImport } from './routes/cssbuy'
+import { Route as FinanceiroRouteImport } from './routes/financeiro'
+import { Route as HistoricoRouteImport } from './routes/historico'
+import { Route as ImportacoesRouteImport } from './routes/importacoes'
+import { Route as MetasRouteImport } from './routes/metas'
+import { Route as ProdutosRouteImport } from './routes/produtos'
+import { Route as UscloserRouteImport } from './routes/uscloser'
+import { Route as VendasRouteImport } from './routes/vendas'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CompararRoute = CompararRouteImport.update({
+  id: '/comparar',
+  path: '/comparar',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConfiguracoesRoute = ConfiguracoesRouteImport.update({
+  id: '/configuracoes',
+  path: '/configuracoes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CssbuyRoute = CssbuyRouteImport.update({
+  id: '/cssbuy',
+  path: '/cssbuy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FinanceiroRoute = FinanceiroRouteImport.update({
+  id: '/financeiro',
+  path: '/financeiro',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HistoricoRoute = HistoricoRouteImport.update({
+  id: '/historico',
+  path: '/historico',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ImportacoesRoute = ImportacoesRouteImport.update({
+  id: '/importacoes',
+  path: '/importacoes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MetasRoute = MetasRouteImport.update({
+  id: '/metas',
+  path: '/metas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProdutosRoute = ProdutosRouteImport.update({
+  id: '/produtos',
+  path: '/produtos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UscloserRoute = UscloserRouteImport.update({
+  id: '/uscloser',
+  path: '/uscloser',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VendasRoute = VendasRouteImport.update({
+  id: '/vendas',
+  path: '/vendas',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/comparar': typeof CompararRoute
+  '/configuracoes': typeof ConfiguracoesRoute
+  '/cssbuy': typeof CssbuyRoute
+  '/financeiro': typeof FinanceiroRoute
+  '/historico': typeof HistoricoRoute
+  '/importacoes': typeof ImportacoesRoute
+  '/metas': typeof MetasRoute
+  '/produtos': typeof ProdutosRoute
+  '/uscloser': typeof UscloserRoute
+  '/vendas': typeof VendasRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/comparar': typeof CompararRoute
+  '/configuracoes': typeof ConfiguracoesRoute
+  '/cssbuy': typeof CssbuyRoute
+  '/financeiro': typeof FinanceiroRoute
+  '/historico': typeof HistoricoRoute
+  '/importacoes': typeof ImportacoesRoute
+  '/metas': typeof MetasRoute
+  '/produtos': typeof ProdutosRoute
+  '/uscloser': typeof UscloserRoute
+  '/vendas': typeof VendasRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/comparar': typeof CompararRoute
+  '/configuracoes': typeof ConfiguracoesRoute
+  '/cssbuy': typeof CssbuyRoute
+  '/financeiro': typeof FinanceiroRoute
+  '/historico': typeof HistoricoRoute
+  '/importacoes': typeof ImportacoesRoute
+  '/metas': typeof MetasRoute
+  '/produtos': typeof ProdutosRoute
+  '/uscloser': typeof UscloserRoute
+  '/vendas': typeof VendasRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/comparar'
+    | '/configuracoes'
+    | '/cssbuy'
+    | '/financeiro'
+    | '/historico'
+    | '/importacoes'
+    | '/metas'
+    | '/produtos'
+    | '/uscloser'
+    | '/vendas'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/comparar'
+    | '/configuracoes'
+    | '/cssbuy'
+    | '/financeiro'
+    | '/historico'
+    | '/importacoes'
+    | '/metas'
+    | '/produtos'
+    | '/uscloser'
+    | '/vendas'
+  id:
+    | '__root__'
+    | '/'
+    | '/comparar'
+    | '/configuracoes'
+    | '/cssbuy'
+    | '/financeiro'
+    | '/historico'
+    | '/importacoes'
+    | '/metas'
+    | '/produtos'
+    | '/uscloser'
+    | '/vendas'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CompararRoute: typeof CompararRoute
+  ConfiguracoesRoute: typeof ConfiguracoesRoute
+  CssbuyRoute: typeof CssbuyRoute
+  FinanceiroRoute: typeof FinanceiroRoute
+  HistoricoRoute: typeof HistoricoRoute
+  ImportacoesRoute: typeof ImportacoesRoute
+  MetasRoute: typeof MetasRoute
+  ProdutosRoute: typeof ProdutosRoute
+  UscloserRoute: typeof UscloserRoute
+  VendasRoute: typeof VendasRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +182,91 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/comparar': {
+      id: '/comparar'
+      path: '/comparar'
+      fullPath: '/comparar'
+      preLoaderRoute: typeof CompararRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/configuracoes': {
+      id: '/configuracoes'
+      path: '/configuracoes'
+      fullPath: '/configuracoes'
+      preLoaderRoute: typeof ConfiguracoesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cssbuy': {
+      id: '/cssbuy'
+      path: '/cssbuy'
+      fullPath: '/cssbuy'
+      preLoaderRoute: typeof CssbuyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/financeiro': {
+      id: '/financeiro'
+      path: '/financeiro'
+      fullPath: '/financeiro'
+      preLoaderRoute: typeof FinanceiroRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/historico': {
+      id: '/historico'
+      path: '/historico'
+      fullPath: '/historico'
+      preLoaderRoute: typeof HistoricoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/importacoes': {
+      id: '/importacoes'
+      path: '/importacoes'
+      fullPath: '/importacoes'
+      preLoaderRoute: typeof ImportacoesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/metas': {
+      id: '/metas'
+      path: '/metas'
+      fullPath: '/metas'
+      preLoaderRoute: typeof MetasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/produtos': {
+      id: '/produtos'
+      path: '/produtos'
+      fullPath: '/produtos'
+      preLoaderRoute: typeof ProdutosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/uscloser': {
+      id: '/uscloser'
+      path: '/uscloser'
+      fullPath: '/uscloser'
+      preLoaderRoute: typeof UscloserRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/vendas': {
+      id: '/vendas'
+      path: '/vendas'
+      fullPath: '/vendas'
+      preLoaderRoute: typeof VendasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CompararRoute: CompararRoute,
+  ConfiguracoesRoute: ConfiguracoesRoute,
+  CssbuyRoute: CssbuyRoute,
+  FinanceiroRoute: FinanceiroRoute,
+  HistoricoRoute: HistoricoRoute,
+  ImportacoesRoute: ImportacoesRoute,
+  MetasRoute: MetasRoute,
+  ProdutosRoute: ProdutosRoute,
+  UscloserRoute: UscloserRoute,
+  VendasRoute: VendasRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

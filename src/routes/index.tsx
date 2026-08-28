@@ -1,24 +1,86 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { Plus } from "lucide-react";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+import { PageHeader } from "@/components/layout/page-header";
+import { Skeleton } from "@/components/ui/skeleton";
+import { DashboardEmptyState } from "@/features/dashboard/empty-state";
+import { GoalPanel } from "@/features/dashboard/goal-panel";
+import { MetricCard } from "@/features/dashboard/metric-card";
+import { RevenueChart } from "@/features/dashboard/revenue-chart";
+import { useDashboardData } from "@/features/dashboard/use-dashboard-data";
+
+const title = "Dashboard — Atlas Store Import & Profit";
+const description =
+  "Painel de gestão da Atlas Store: capital investido, custos de importação, receita e lucro potencial, reinvestimento e meta atual.";
+
 export const Route = createFileRoute("/")({
-  component: Index,
+  head: () => ({
+    meta: [
+      { title },
+      { name: "description", content: description },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
+    ],
+  }),
+  component: DashboardPage,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
+function DashboardPage() {
+  const { data, isPending, error } = useDashboardData();
+
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
+    <div className="mx-auto w-full max-w-6xl">
+      <PageHeader
+        eyebrow="Visão geral"
+        title="Dashboard"
+        description="Resumo financeiro e operacional da loja, calculado a partir dos seus dados."
+        action={
+          <Link
+            to="/importacoes"
+            className="inline-flex shrink-0 items-center gap-2 rounded-xl bg-primary px-3 py-2 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 sm:px-4 sm:py-2.5"
+          >
+            <Plus className="h-4 w-4" />
+            <span className="hidden sm:inline">Nova importação</span>
+            <span className="sm:hidden">Importação</span>
+          </Link>
+        }
       />
+
+      {isPending && (
+        <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+          {Array.from({ length: 6 }).map((_, i) => (
+            <Skeleton key={i} className="h-[7.5rem] rounded-2xl" />
+          ))}
+        </div>
+      )}
+
+      {error && (
+        <section className="surface-card rounded-2xl p-6 text-sm text-muted-foreground">
+          Não foi possível carregar os dados agora. Entre na sua conta e tente novamente.
+        </section>
+      )}
+
+      {data && (
+        <>
+          {data.counts.importations === 0 && data.counts.products === 0 ? (
+            <DashboardEmptyState />
+          ) : (
+            <section
+              aria-label="Indicadores financeiros"
+              className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3"
+            >
+              {data.metrics.map((metric) => (
+                <MetricCard key={metric.id} metric={metric} />
+              ))}
+            </section>
+          )}
+
+          <div className="mt-6 grid gap-6">
+            <GoalPanel goal={data.goal} />
+            <RevenueChart data={data.monthly} />
+          </div>
+        </>
+      )}
     </div>
   );
 }
