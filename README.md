@@ -738,3 +738,80 @@ Total: R$1.800
 Custo médio: R$180 por peça.
 
 Nunca considerar automaticamente apenas o preço de compra como custo final.
+
+## Prompt 8 - vendas e regra dos 50%
+
+Agora quero criar o módulo:
+
+💰 VENDAS
+
+Criar sistema de registro de vendas.
+
+Quando eu vender um produto, registrar:
+
+- Produto
+- Quantidade
+- Preço de venda
+- Taxa de pagamento
+- Outros custos
+- Receita
+- Custo
+- Lucro
+- Lucro disponível
+- Reinvestimento
+
+==================================================
+REGRA DA ATLAS STORE
+==================================================
+
+Por padrão:
+
+50% do lucro = dinheiro disponível
+50% do lucro = reinvestimento
+
+Isso deve ser configurável.
+
+==================================================
+EXEMPLO OBRIGATÓRIO
+==================================================
+
+Produto:
+
+Custo = R$100
+Venda = R$500
+
+Lucro:
+
+R$500 - R$100 = R$400
+
+Disponível:
+
+R$400 × 50% = R$200
+
+Reinvestimento:
+
+R$400 × 50% = R$200
+
+O sistema deve mostrar exatamente:
+
+Preço de venda: R$500
+Custo: R$100
+Lucro: R$400
+Disponível: R$200
+Reinvestimento: R$200
+
+==================================================
+ATENÇÃO
+==================================================
+
+Se houver taxa de pagamento, ela deve ser descontada antes do cálculo final do lucro.
+
+Se o custo total for maior que o preço de venda:
+
+Mostrar:
+
+⚠️ PREJUÍZO
+
+Nunca classificar como lucro.
+
+Não confundir faturamento com lucro.
