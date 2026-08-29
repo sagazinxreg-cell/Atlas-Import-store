@@ -1,11 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ShoppingBag } from "lucide-react";
 
-import { ModulePlaceholder } from "@/components/layout/module-placeholder";
+import { SalesPanel } from "@/features/vendas/sales-panel";
 
 const title = "Vendas — Atlas Store";
 const description =
-  "Registro de vendas da Atlas Store com lucro por peça, formas de pagamento e desempenho por período.";
+  "Registro de vendas da Atlas Store com receita, custo real, lucro e divisão configurável entre disponível e reinvestimento.";
 
 export const Route = createFileRoute("/vendas")({
   head: () => ({
@@ -16,18 +15,5 @@ export const Route = createFileRoute("/vendas")({
       { property: "og:description", content: description },
     ],
   }),
-  component: () => (
-    <ModulePlaceholder
-      eyebrow="Financeiro"
-      title="Vendas"
-      description="Cada venda registrada com produto, valor, cliente e lucro realizado."
-      icon={ShoppingBag}
-      upcoming={[
-        "Registro rápido de venda",
-        "Lucro realizado por peça",
-        "Formas de pagamento",
-        "Desempenho por período",
-      ]}
-    />
-  ),
+  component: SalesPanel,
 });
